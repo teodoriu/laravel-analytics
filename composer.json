@@ -1,0 +1,46 @@
+{
+    "name": "teodoriu/laravel-analytics",
+    "description": "A Laravel package to retrieve Google Analytics (GA4) data.",
+    "keywords": [
+        "teodoriu",
+        "google",
+        "analytics",
+        "ga4",
+        "retrieve",
+        "reports",
+        "laravel"
+    ],
+    "homepage": "https://github.com/teodoriu/laravel-analytics",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Teodor B.",
+            "email": "teodoriu@pm.me",
+            "homepage": "https://github.com/teodoriu",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "google/analytics-data": "^0.4",
+        "laravel/framework": "^6.0|^7.0|^8.0",
+        "nesbot/carbon": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Teodoriu\\Analytics\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Teodoriu\\Analytics\\AnalyticsServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
