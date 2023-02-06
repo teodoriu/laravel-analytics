@@ -1,6 +1,6 @@
 <?php
 
-namespace Teodoriu\Analytics;
+namespace ErlanCarreira\Analytics;
 
 use DateTimeInterface;
 use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
@@ -13,7 +13,7 @@ class Analytics
 {
     use Macroable;
 
-    /** @var \Teodoriu\Analytics\AnalyticsClient */
+    /** @var \ErlanCarreira\Analytics\AnalyticsClient */
     protected $client;
 
     /** @var string */
@@ -25,7 +25,7 @@ class Analytics
     private $report;
 
     /**
-     * @param  \Teodoriu\Analytics\AnalyticsClient  $client
+     * @param  \ErlanCarreira\Analytics\AnalyticsClient  $client
      * @param  string  $propertyId
      */
     public function __construct(AnalyticsClient $client, string $propertyId)

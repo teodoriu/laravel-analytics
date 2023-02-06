@@ -1,11 +1,11 @@
 <?php
 
-namespace Teodoriu\Analytics\Facades;
+namespace ErlanCarreira\Analytics\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Teodoriu\Analytics\Analytics
+ * @see \ErlanCarreira\Analytics\Analytics
  */
 class Analytics extends Facade
 {

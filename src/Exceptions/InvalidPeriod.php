@@ -1,6 +1,6 @@
 <?php
 
-namespace Teodoriu\Analytics\Exceptions;
+namespace ErlanCarreira\Analytics\Exceptions;
 
 use DateTimeInterface;
 use Exception;

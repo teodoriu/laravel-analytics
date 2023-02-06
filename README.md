@@ -8,7 +8,7 @@ Here are a few examples of the provided methods:
 $start = \Illuminate\Support\Carbon::now()->startOfDay();
 $end = \Illuminate\Support\Carbon::now()->endOfDay();
 
-$totalUsers = Teodoriu\Analytics\Facades\Analytics::setDateRanges($start, $end)
+$totalUsers = ErlanCarreira\Analytics\Facades\Analytics::setDateRanges($start, $end)
                                ->setDimensions(
                                    [
                                        'hostName',
@@ -42,7 +42,7 @@ ANALYTICS_PROPERTY_ID=analytics_property_id
 Optionally, you can publish the config file of this package with this command:
 
 ``` bash
-php artisan vendor:publish --provider="Teodoriu\Analytics\AnalyticsServiceProvider"
+php artisan vendor:publish --provider="ErlanCarreira\Analytics\AnalyticsServiceProvider"
 ```
 
 The following config file will be published in `config/analytics.php`
@@ -100,7 +100,7 @@ To perform all other queries on the Google Analytics resource use `runReport`.  
 You can get access to the underlying `BetaAnalyticsDataClient` object:
 
 ```php
-Teodoriu\Analytics\Facades\Analytics::getAnalyticsService();
+ErlanCarreira\Analytics\Facades\Analytics::getAnalyticsService();
 ```
 
 ### Changelog
@@ -113,7 +113,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email teodoriu@pm.me instead of using the issue tracker.
+If you discover any security related issues, please email erlancarreira@hotmail.com instead of using the issue tracker.
 
 ## Credits
 

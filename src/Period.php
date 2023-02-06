@@ -1,10 +1,10 @@
 <?php
 
-namespace Teodoriu\Analytics;
+namespace ErlanCarreira\Analytics;
 
 use Carbon\Carbon;
 use DateTimeInterface;
-use Teodoriu\Analytics\Exceptions\InvalidPeriod;
+use ErlanCarreira\Analytics\Exceptions\InvalidPeriod;
 
 class Period
 {

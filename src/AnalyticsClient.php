@@ -1,6 +1,6 @@
 <?php
 
-namespace Teodoriu\Analytics;
+namespace ErlanCarreira\Analytics;
 
 use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Illuminate\Contracts\Cache\Repository;
@@ -81,6 +81,6 @@ class AnalyticsClient
      */
     protected function determineCacheName($properties): string
     {
-        return 'teodoriu.laravel-analytics.'.md5(serialize($properties));
+        return 'erlancarreira.laravel-analytics.'.md5(serialize($properties));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Teodoriu\Analytics;
+namespace ErlanCarreira\Analytics;
 
 use Illuminate\Support\ServiceProvider;
-use Teodoriu\Analytics\Exceptions\InvalidConfiguration;
+use ErlanCarreira\Analytics\Exceptions\InvalidConfiguration;
 
 class AnalyticsServiceProvider extends ServiceProvider
 {
