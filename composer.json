@@ -1,5 +1,5 @@
 {
-    "name": "teodoriu/laravel-analytics",
+    "name": "erlancarreira/laravel-analytics",
     "description": "A Laravel package to retrieve Google Analytics (GA4) data.",
     "keywords": [
         "teodoriu",
