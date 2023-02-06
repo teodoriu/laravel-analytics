@@ -28,7 +28,7 @@ $totalUsers = Teodoriu\Analytics\Facades\Analytics::setDateRanges($start, $end)
 This package can be installed through Composer.
 
 ``` bash
-composer require teodoriu/laravel-analytics
+composer require erlancarreira/laravel-analytics
 ```
 
 Add in your .env
