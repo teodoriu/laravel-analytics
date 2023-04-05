@@ -4,6 +4,9 @@ namespace ErlanCarreira\Analytics;
 
 use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Illuminate\Contracts\Cache\Repository;
+use Google\Analytics\Data\V1beta\MetricAggregation;
+use Illuminate\Support\Facades\Http;
+
 
 class AnalyticsClient
 {
@@ -42,12 +45,19 @@ class AnalyticsClient
         return $this;
     }
 
+    public function checkCompatibility($request) 
+    {
+      
+        $response = Http::post("https://analyticsdata.googleapis.com/v1beta/properties/{$this->propertyId}:checkCompatibility", $request);  
+        return $response;
+    }
+
     /**
      * Query the Google Analytics Service with given parameters.
      *
      * @return array|null
      */
-    public function runReport($propertyId, $dateRanges, $metrics, $dimensions)
+    public function runReport($propertyId, $dateRanges, $metrics, $dimensions, $orderBys, $dimensionFilter)
     {
         $cacheName = $this->determineCacheName(func_get_args());
 
@@ -58,15 +68,32 @@ class AnalyticsClient
         return $this->cache->remember(
             $cacheName,
             $this->cacheLifeTimeInMinutes,
-            function () use ($propertyId, $dateRanges, $metrics, $dimensions) {
-                return $this->service->runReport(
-                    [
-                        'property'   => 'properties/'.$propertyId,
-                        'dateRanges' => [$dateRanges],
-                        'dimensions' => $dimensions,
-                        'metrics'    => $metrics,
-                    ]
-                );
+            function () use ($propertyId, $dateRanges, $metrics, $dimensions, $orderBys, $dimensionFilter) {
+                 
+                $data =  [
+                    'property'        => 'properties/'.$propertyId,
+                    'dateRanges'      => $dateRanges,
+                    'dimensions'      => $dimensions,
+                    'metrics'         => $metrics,
+                    'orderBys'        => $orderBys,
+                    'dimensionFilter' => $dimensionFilter,
+                    'metricAggregations' => [ // Não remover
+                        MetricAggregation::TOTAL,
+                    ],
+                
+                ];
+
+                $request = collect($data ?? [])->reduce( function($acc, $item, $key) {
+                    
+                    if (is_array($item) && count($item) > 0 || $item) { 
+                        $acc[$key] = $item; 
+                    }
+
+                    return $acc;
+                     
+                }, []);
+
+                return $this->service->runReport($request);
             }
         );
     }
@@ -81,6 +108,6 @@ class AnalyticsClient
      */
     protected function determineCacheName($properties): string
     {
-        return 'erlancarreira.laravel-analytics.'.md5(serialize($properties));
+        return 'erlancarreira.laravel-analyticsV1.'.md5(serialize($properties));
     }
 }

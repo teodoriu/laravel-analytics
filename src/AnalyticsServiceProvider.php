@@ -12,6 +12,7 @@ class AnalyticsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+       
         $this->publishes(
             [
                 __DIR__.'/../config/analytics.php' => config_path('analytics.php'),
@@ -33,13 +34,21 @@ class AnalyticsServiceProvider extends ServiceProvider
 
                 $this->guardAgainstInvalidConfiguration($analyticsConfig);
 
+                $path = storage_path('app/analytics/service-account-credentials.json');
+        
+                putenv("GOOGLE_APPLICATION_CREDENTIALS=$path");
+
                 $client = app(AnalyticsClient::class);
 
                 return new Analytics($client, $analyticsConfig['property_id']);
             }
         );
 
-        $this->app->alias(Analytics::class, 'laravel-analytics');
+        
+
+        $this->app->alias(Analytics::class, 'laravel-analyticsV1');
+
+        
     }
 
     protected function guardAgainstInvalidConfiguration(array $analyticsConfig = null)
